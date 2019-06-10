@@ -20,33 +20,33 @@ import QRScannerRectView from './QRScannerRectView'
 const IS_ANDROID = Platform.OS === 'android'
 
 export interface Props {
-  color: string
-  maskColor: string
-  cornerColor: string
-  borderColor: string
-  rectHeight: number
-  rectWidth: number
-  borderWidth: number
-  cornerBorderWidth: number
-  cornerBorderLength: number
-  isLoading: boolean
-  cornerOffsetSize: number
-  isCornerOffset: boolean
-  bottomMenuHeight: number
-  scanBarAnimateTime: number
-  scanBarColor: string
-  scanBarImage: ImageSourcePropType
-  scanBarHeight: number
-  scanBarMargin: number
-  hintText: string
-  hintTextStyle: StyleProp<TextStyle>
-  hintTextPosition: number
-  isShowScanBar: boolean
+  color?: string
+  maskColor?: string
+  cornerColor?: string
+  borderColor?: string
+  rectHeight?: number
+  rectWidth?: number
+  borderWidth?: number
+  cornerBorderWidth?: number
+  cornerBorderLength?: number
+  isLoading?: boolean
+  cornerOffsetSize?: number
+  isCornerOffset?: boolean
+  bottomMenuHeight?: number
+  scanBarAnimateTime?: number
+  scanBarColor?: string
+  scanBarImage?: ImageSourcePropType
+  scanBarHeight?: number
+  scanBarMargin?: number
+  hintText?: string
+  hintTextStyle?: StyleProp<TextStyle>
+  hintTextPosition?: number
+  isShowScanBar?: boolean
 
-  onScanResultReceived: any
-  renderTopBarView: any
-  renderBottomMenuView: any
-  bottomMenuStyle: StyleProp<ViewStyle>
+  onScanResultReceived?: any
+  renderTopBarView?: any
+  renderBottomMenuView?: any
+  bottomMenuStyle?: StyleProp<ViewStyle>
 }
 
 export interface State {}
