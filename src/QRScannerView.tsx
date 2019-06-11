@@ -19,6 +19,17 @@ import { QRScannerRectView } from './QRScannerRectView'
 
 const IS_ANDROID = Platform.OS === 'android'
 
+export interface ScanResult {
+  data: string
+  rawData?: string
+  type: keyof BarCodeType
+  /**
+   * @description For Android use `[Point<string>, Point<string>]`
+   * @description For iOS use `{ origin: Point<string>, size: Size<string> }`
+   */
+  bounds: [Point<string>, Point<string>] | { origin: Point<string>; size: Size<string> }
+}
+
 export interface Props {
   color?: string
   maskColor?: string
@@ -43,16 +54,7 @@ export interface Props {
   hintTextPosition?: number
   isShowScanBar?: boolean
 
-  onScanResultReceived?(event: {
-    data: string
-    rawData?: string
-    type: keyof BarCodeType
-    /**
-     * @description For Android use `[Point<string>, Point<string>]`
-     * @description For iOS use `{ origin: Point<string>, size: Size<string> }`
-     */
-    bounds: [Point<string>, Point<string>] | { origin: Point<string>; size: Size<string> }
-  }): void
+  onScanResultReceived?(e: ScanResult): void
   renderTopBarView?: () => JSX.Element
   renderBottomMenuView?: () => JSX.Element
   bottomMenuStyle?: StyleProp<ViewStyle>
