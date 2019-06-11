@@ -5,7 +5,7 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Camera from 'react-native-camera'
+import { RNCamera as Camera } from 'react-native-camera'
 import {
   StyleSheet,
   Platform,
