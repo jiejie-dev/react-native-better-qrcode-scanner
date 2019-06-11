@@ -94,7 +94,7 @@ export default class QRScannerView extends React.Component<Props, State> {
       <View style={{ flex: 1 }}>
         <Camera onBarCodeRead={this.props.onScanResultReceived} style={{ flex: 1 }}>
           {/*绘制顶部标题栏组件*/}
-          {IS_ANDROID ? this.props.renderTopBarView() : null}
+          {IS_ANDROID && this.props.renderTopBarView ? this.props.renderTopBarView() : null}
 
           {/*绘制扫描遮罩*/}
           <QRScannerRectView
@@ -122,12 +122,14 @@ export default class QRScannerView extends React.Component<Props, State> {
           />
 
           {/*绘制顶部标题栏组件*/}
-          {!IS_ANDROID ? this.props.renderTopBarView() : null}
+          {!IS_ANDROID && this.props.renderTopBarView ? this.props.renderTopBarView() : null}
 
           {/*绘制底部操作栏*/}
-          <View style={[styles.buttonsContainer, this.props.bottomMenuStyle]}>
-            {this.props.renderBottomMenuView()}
-          </View>
+          {!!this.props.renderBottomMenuView ? (
+            <View style={[styles.buttonsContainer, this.props.bottomMenuStyle]}>
+              {this.props.renderBottomMenuView()}
+            </View>
+          ) : null}
         </Camera>
       </View>
     )
