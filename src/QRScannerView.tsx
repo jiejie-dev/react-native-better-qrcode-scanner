@@ -5,7 +5,7 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { RNCamera as Camera } from 'react-native-camera'
+import { RNCamera as Camera, BarCodeType, Point, Size } from 'react-native-camera'
 import {
   StyleSheet,
   Platform,
@@ -43,9 +43,18 @@ export interface Props {
   hintTextPosition?: number
   isShowScanBar?: boolean
 
-  onScanResultReceived?: any
-  renderTopBarView?: any
-  renderBottomMenuView?: any
+  onScanResultReceived?(event: {
+    data: string
+    rawData?: string
+    type: keyof BarCodeType
+    /**
+     * @description For Android use `[Point<string>, Point<string>]`
+     * @description For iOS use `{ origin: Point<string>, size: Size<string> }`
+     */
+    bounds: [Point<string>, Point<string>] | { origin: Point<string>; size: Size<string> }
+  }): void
+  renderTopBarView?: () => JSX.Element
+  renderBottomMenuView?: () => JSX.Element
   bottomMenuStyle?: StyleProp<ViewStyle>
 }
 
@@ -55,33 +64,33 @@ export interface State {}
  * 扫描界面
  */
 export class QRScannerView extends React.Component<Props, State> {
-  static propTypes = {
-    maskColor: PropTypes.string,
-    borderColor: PropTypes.string,
-    cornerColor: PropTypes.string,
-    borderWidth: PropTypes.number,
-    cornerBorderWidth: PropTypes.number,
-    cornerBorderLength: PropTypes.number,
-    rectHeight: PropTypes.number,
-    rectWidth: PropTypes.number,
-    isLoading: PropTypes.bool,
-    isCornerOffset: PropTypes.bool, //边角是否偏移
-    cornerOffsetSize: PropTypes.number,
-    bottomMenuHeight: PropTypes.number,
-    scanBarAnimateTime: PropTypes.number,
-    scanBarColor: PropTypes.string,
-    scanBarImage: PropTypes.any,
-    scanBarHeight: PropTypes.number,
-    scanBarMargin: PropTypes.number,
-    hintText: PropTypes.string,
-    hintTextStyle: PropTypes.object,
-    hintTextPosition: PropTypes.number,
-    renderTopBarView: PropTypes.func,
-    renderBottomMenuView: PropTypes.func,
-    isShowScanBar: PropTypes.bool,
-    bottomMenuStyle: PropTypes.object,
-    onScanResultReceived: PropTypes.func
-  }
+  // static propTypes = {
+  //   maskColor: PropTypes.string,
+  //   borderColor: PropTypes.string,
+  //   cornerColor: PropTypes.string,
+  //   borderWidth: PropTypes.number,
+  //   cornerBorderWidth: PropTypes.number,
+  //   cornerBorderLength: PropTypes.number,
+  //   rectHeight: PropTypes.number,
+  //   rectWidth: PropTypes.number,
+  //   isLoading: PropTypes.bool,
+  //   isCornerOffset: PropTypes.bool, //边角是否偏移
+  //   cornerOffsetSize: PropTypes.number,
+  //   bottomMenuHeight: PropTypes.number,
+  //   scanBarAnimateTime: PropTypes.number,
+  //   scanBarColor: PropTypes.string,
+  //   scanBarImage: PropTypes.any,
+  //   scanBarHeight: PropTypes.number,
+  //   scanBarMargin: PropTypes.number,
+  //   hintText: PropTypes.string,
+  //   hintTextStyle: PropTypes.object,
+  //   hintTextPosition: PropTypes.number,
+  //   renderTopBarView: PropTypes.func,
+  //   renderBottomMenuView: PropTypes.func,
+  //   isShowScanBar: PropTypes.bool,
+  //   bottomMenuStyle: PropTypes.object,
+  //   onScanResultReceived: PropTypes.func
+  // }
 
   constructor(props: Props) {
     super(props)
