@@ -4,7 +4,7 @@
  * Desc:
  */
 import { StyleSheet } from 'react-native'
-import { Colors } from '../../../resource/'
+import { Colors } from '../../../resource'
 
 export default StyleSheet.create({
   image_qqbrowser_light: {

@@ -15,7 +15,7 @@ import {
   TextStyle,
   ViewStyle
 } from 'react-native'
-import QRScannerRectView from './QRScannerRectView'
+import { QRScannerRectView } from './QRScannerRectView'
 
 const IS_ANDROID = Platform.OS === 'android'
 
@@ -54,7 +54,7 @@ export interface State {}
 /**
  * 扫描界面
  */
-export default class QRScannerView extends React.Component<Props, State> {
+export class QRScannerView extends React.Component<Props, State> {
   static propTypes = {
     maskColor: PropTypes.string,
     borderColor: PropTypes.string,

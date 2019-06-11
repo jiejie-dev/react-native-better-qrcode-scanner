@@ -6,12 +6,11 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import Toast from 'react-native-simple-toast'
-import { QRScannerView } from 'react-native-qrcode-scanner'
 
-import { ImageButton, TitleBar } from 'react-native-better-qrcode-scanner'
-
+import { QRScannerView } from 'react-native-better-qrcode-scanner'
+import TitleBar from '../../components/TitleBar'
 import Styles from './styles/WeChatScreenStyles'
-import { Constants, Images, Colors } from '../../resource/'
+import { Constants, Images, Colors } from '../../resource'
 
 export default class WeChatScreen extends Component {
   render() {

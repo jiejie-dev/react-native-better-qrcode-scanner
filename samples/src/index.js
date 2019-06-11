@@ -3,12 +3,12 @@
  * Function: 程序主入口
  * Desc: 在这里做一些全局配置，比如全局 Navigator配置，全局变量初始化等。
  */
-import React, { Component } from 'react'
-import { AppRegistry, View, StyleSheet, Text, Image, TouchableWithoutFeedback } from 'react-native'
-import { StackNavigator } from 'react-navigation'
+import React from 'react'
+import { View, StyleSheet, Text, Image, TouchableWithoutFeedback } from 'react-native'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 import Toast from 'react-native-simple-toast'
 
-import { Colors, Images } from './resource/'
+import { Colors, Images } from './resource'
 
 import OFOScreen from './screens/ofo/OFOScreen'
 import TwitterScreen from './screens/twitter/TwitterScreen'
@@ -16,7 +16,7 @@ import QQBrowserScreen from './screens/qqbrowser/QQBrowserScreen'
 import WeChatScreen from './screens/wechat/WeChatScreen'
 import DefaultScreen from './screens/default/DefaultScreen'
 
-class HomeScreen extends Component {
+class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
 
@@ -138,18 +138,18 @@ const styles = StyleSheet.create({
   }
 })
 
-const App = StackNavigator(
+const App = createStackNavigator(
   {
-    Home: { screen: HomeScreen },
-    WeChat: { screen: WeChatScreen },
-    Twitter: { screen: TwitterScreen },
-    OFO: { screen: OFOScreen },
-    QQBrowser: { screen: QQBrowserScreen },
-    Default1: { screen: DefaultScreen }
+    Home: HomeScreen,
+    WeChat: WeChatScreen,
+    Twitter: TwitterScreen,
+    OFO: OFOScreen,
+    QQBrowser: QQBrowserScreen,
+    Default1: DefaultScreen
   },
   {
     headerMode: 'none'
   }
 )
 
-AppRegistry.registerComponent('demo', () => App)
+export default createAppContainer(App)

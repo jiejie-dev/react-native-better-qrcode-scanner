@@ -13,7 +13,7 @@ import {
   LayoutChangeEvent
 } from 'react-native'
 
-export interface Props {
+export interface QRScannerRectViewProps {
   color?: string
   maskColor?: string
   cornerColor?: string
@@ -38,7 +38,7 @@ export interface Props {
   isShowScanBar?: boolean
 }
 
-export interface State {
+export interface QRScannerRectViewState {
   topWidth: number
   topHeight: number
   leftWidth: number
@@ -49,7 +49,10 @@ export interface State {
  * 扫描界面遮罩
  * 单独写一个类，方便拷贝使用
  */
-export default class QRScannerRectView extends React.Component<Props, State> {
+export class QRScannerRectView extends React.Component<
+  QRScannerRectViewProps,
+  QRScannerRectViewState
+> {
   static defaultProps = {
     maskColor: '#0000004D',
     cornerColor: '#22ff00',
@@ -74,7 +77,7 @@ export default class QRScannerRectView extends React.Component<Props, State> {
     isShowScanBar: true
   }
 
-  constructor(props: Props) {
+  constructor(props: QRScannerRectViewProps) {
     super(props)
 
     this.getBackgroundColor = this.getBackgroundColor.bind(this)

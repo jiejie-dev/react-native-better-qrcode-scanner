@@ -8,10 +8,10 @@ import { Text, View } from 'react-native'
 import Toast from 'react-native-simple-toast'
 import { QRScannerView } from 'react-native-better-qrcode-scanner'
 
-import { ImageButton } from '../../components/'
+import { ImageButton } from '../../components'
 
 import Styles from './styles/QQBrowserScreenStyles'
-import { Images, Colors } from '../../resource/'
+import { Images, Colors } from '../../resource'
 
 export default class QQBrowserScreen extends Component {
   render() {

@@ -8,10 +8,10 @@ import { Text, View } from 'react-native'
 import Toast from 'react-native-simple-toast'
 import { QRScannerView } from 'react-native-better-qrcode-scanner'
 
-import { ImageButton, TitleBar } from '../../components/'
+import { ImageButton, TitleBar } from '../../components'
 
 import Styles from './styles/OFOScreenStyles'
-import { Constants, Images, Colors } from '../../resource/'
+import { Constants, Images, Colors } from '../../resource'
 
 export default class OFOScreen extends Component {
   render() {

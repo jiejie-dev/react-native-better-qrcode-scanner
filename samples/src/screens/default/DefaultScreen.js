@@ -6,7 +6,8 @@
 import React, { Component } from 'react'
 import { Text } from 'react-native'
 import Toast from 'react-native-simple-toast'
-import QRScannerView from 'react-native-better-qrcode-scanner'
+import { QRScannerView } from 'react-native-better-qrcode-scanner'
+console.log(QRScannerView)
 
 export default class DefaultScreen extends Component {
   render() {
